@@ -9,11 +9,11 @@ const App = () => {
     return (
         <div
             className={`min-h-screen flex flex-col justify-center items-center transition-colors duration-500 ${
-                darkMode ? 'dark bg-black text-white' : 'bg-white text-gray-800'
+                darkMode ? 'dark bg-black text-white' : 'bg-white text-gray-900'
             }`}
         >
             <div className="w-full max-w-4xl p-6">
-                <header className="p-4 flex justify-between items-center shadow-md">
+                <header className="p-4 flex justify-between items-center shadow-md dark:border dark:border-white">
                     <h1 className="text-xl font-bold">Daniel Mira | Portafolio</h1>
                     <button
                         onClick={() => setDarkMode(!darkMode)}
@@ -47,14 +47,14 @@ const App = () => {
                     <section id="projects" className="mb-8">
                         <h2 className="text-2xl font-bold mb-4">Proyectos</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="p-4 rounded-lg shadow-md">
+                            <div className="p-4 rounded-lg shadow-md dark:border dark:border-white">
                                 <h3 className="text-xl font-bold">Plataforma de Empleo</h3>
                                 <p>Aplicación para gestión de vacantes y postulaciones con React, Node.js y PostgreSQL.</p>
                                 <a href="#" className="hover:underline">
                                     Ver proyecto
                                 </a>
                             </div>
-                            <div className="p-4 rounded-lg shadow-md">
+                            <div className="p-4 rounded-lg shadow-md dark:border dark:border-white">
                                 <h3 className="text-xl font-bold">Dashboard de Monitoreo</h3>
                                 <p>Herramienta de visualización de datos en tiempo real con React y WebSockets.</p>
                                 <a href="#" className="hover:underline">
@@ -87,7 +87,7 @@ const App = () => {
                             ></textarea>
                             <button
                                 type="submit"
-                                className="px-4 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-600"
+                                className={`px-4 py-2 shadow-md rounded-md hover:cursor-pointer ${darkMode ? 'bg-white text-gray-900' : 'bg-gray-900 text-white'}`}
                             >
                                 Enviar
                             </button>
