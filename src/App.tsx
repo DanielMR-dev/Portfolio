@@ -4,7 +4,7 @@ import './index.css';
 import { Sun, Moon } from 'lucide-react';
 
 const App = () => {
-    const [darkMode, setDarkMode] = useState(false);
+    const [darkMode, setDarkMode] = useState(true);
 
     return (
         <div
@@ -14,7 +14,7 @@ const App = () => {
         >
             <div className="w-full max-w-4xl p-6">
                 <header className="p-4 flex justify-between items-center shadow-md dark:border dark:border-white">
-                    <h1 className="text-xl font-bold">Daniel Mira | Portafolio</h1>
+                    <h1 className="text-xl font-light">Daniel Mira | FullStack Developer | Pereira, Colombia</h1>
                     <button
                         onClick={() => setDarkMode(!darkMode)}
                         className={`px-4 py-2 rounded-md flex items-center justify-center ${darkMode ? 'text-white' : 'text-gray-900'}`}
@@ -26,7 +26,7 @@ const App = () => {
                 <main>
                     {/* Home Section */}
                     <section id="home" className="mb-8 pt-3">
-                        <h2 className="text-3xl font-bold mb-4">Hola, soy Daniel Mira</h2>
+                        <h2 className="text-3xl font-medium mb-4">Hola, soy Daniel Mira</h2>
                         <p>
                             Soy desarrollador Full Stack con experiencia en React, TypeScript, Node.js y ciberseguridad.
                             Me apasiona crear soluciones innovadoras y seguras para el mundo digital.
@@ -35,7 +35,7 @@ const App = () => {
 
                     {/* About Section */}
                     <section id="about" className="mb-8">
-                        <h2 className="text-2xl font-bold mb-4">Sobre mí</h2>
+                        <h2 className="text-2xl font-medium mb-4">Sobre mí</h2>
                         <p>
                             Tengo conocimientos sólidos en desarrollo frontend y backend, y disfruto aprender continuamente para
                             mejorar mis habilidades técnicas. Además, tengo experiencia en herramientas de ciberseguridad como
@@ -45,17 +45,17 @@ const App = () => {
 
                     {/* Projects Section */}
                     <section id="projects" className="mb-8">
-                        <h2 className="text-2xl font-bold mb-4">Proyectos</h2>
+                        <h2 className="text-2xl font-medium mb-4">Proyectos</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="p-4 rounded-lg shadow-md dark:border dark:border-white">
-                                <h3 className="text-xl font-bold">Plataforma de Empleo</h3>
+                                <h3 className="text-xl font-medium">Plataforma de Empleo</h3>
                                 <p>Aplicación para gestión de vacantes y postulaciones con React, Node.js y PostgreSQL.</p>
                                 <a href="#" className="hover:underline">
                                     Ver proyecto
                                 </a>
                             </div>
                             <div className="p-4 rounded-lg shadow-md dark:border dark:border-white">
-                                <h3 className="text-xl font-bold">Dashboard de Monitoreo</h3>
+                                <h3 className="text-xl font-medium">Dashboard de Monitoreo</h3>
                                 <p>Herramienta de visualización de datos en tiempo real con React y WebSockets.</p>
                                 <a href="#" className="hover:underline">
                                     Ver proyecto
@@ -66,7 +66,7 @@ const App = () => {
 
                     {/* Contact Section */}
                     <section id="contact" className="mb-8">
-                        <h2 className="text-2xl font-bold mb-4">Contacto</h2>
+                        <h2 className="text-2xl font-medium mb-4">Contacto</h2>
                         <p>
                             Si quieres colaborar en algún proyecto o tienes alguna pregunta, no dudes en contactarme.
                         </p>
@@ -74,16 +74,16 @@ const App = () => {
                             <input
                                 type="text"
                                 placeholder="Nombre"
-                                className="w-full mb-4 p-2 border rounded-md"
+                                className="w-full mb-4 p-2 border rounded-md placeholder-gray-500 dark:placeholder-gray-300"
                             />
                             <input
                                 type="email"
                                 placeholder="Correo Electrónico"
-                                className="w-full mb-4 p-2 border rounded-md"
+                                className="w-full mb-4 p-2 border rounded-md placeholder-gray-500 dark:placeholder-gray-300"
                             />
                             <textarea
                                 placeholder="Mensaje"
-                                className="w-full mb-4 p-2 border rounded-md"
+                                className="w-full mb-4 p-2 border rounded-md placeholder-gray-500 dark:placeholder-gray-300"
                             ></textarea>
                             <button
                                 type="submit"
