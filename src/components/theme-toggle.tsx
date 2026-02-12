@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+// Icons from lucide-react
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 
