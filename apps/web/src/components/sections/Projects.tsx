@@ -21,6 +21,7 @@ export function Projects() {
 
   return (
     <SectionWrapper id="projects">
+      <div className="rounded-2xl bg-[var(--color-card)] border border-[var(--color-border)] p-5 md:p-10">
       <SectionTitle title={t('title')} subtitle={t('subtitle')} />
 
       {/* Tag filter */}
@@ -66,7 +67,7 @@ export function Projects() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.3 }}
-                  className="p-5 rounded-xl bg-[var(--color-card)] border border-[var(--color-border)] flex flex-col gap-4 hover:border-[var(--color-cyber-blue)]/50 transition-colors"
+                  className="p-5 rounded-xl bg-(--color-secondary) border border-(--color-border) flex flex-col gap-4 hover:border-cyber-blue/50 transition-colors"
                 >
                   <div className="flex items-start justify-between gap-2">
                     <h3 className="font-semibold text-[var(--color-foreground)]">{title}</h3>
@@ -111,6 +112,7 @@ export function Projects() {
             })
           )}
         </AnimatePresence>
+      </div>
       </div>
     </SectionWrapper>
   );

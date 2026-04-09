@@ -11,10 +11,6 @@
     },
     "lint": {
       "dependsOn": ["^lint"]
-    },
-    "start:dev": {
-      "cache": false,
-      "persistent": true
     }
   }
 }

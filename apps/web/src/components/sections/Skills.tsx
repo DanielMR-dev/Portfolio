@@ -15,36 +15,38 @@ export function Skills() {
   }));
 
   return (
-    <SectionWrapper id="skills" className="bg-[var(--color-card)]/30">
-      <SectionTitle title={t('title')} subtitle={t('subtitle')} centered />
-      <div className="grid md:grid-cols-2 gap-8">
-        {skillsByCategory.map(({ category, label, skills }) => (
-          <div key={category}>
-            <h3 className="font-mono text-sm font-medium text-[var(--color-cyber-blue)] uppercase tracking-wider mb-4">
-              {label}
-            </h3>
-            <div className="space-y-3">
-              {skills.map((skill) => (
-                <div key={skill.name}>
-                  <div className="flex justify-between items-center mb-1">
-                    <span className="text-sm font-medium text-[var(--color-foreground)]">
-                      {skill.name}
-                    </span>
-                    <span className="text-xs font-mono text-[var(--color-muted-foreground)]">
-                      {skill.level}%
-                    </span>
+    <SectionWrapper id="skills">
+      <div className="rounded-2xl bg-(--color-card) border border-(--color-border) p-6 md:p-10">
+        <SectionTitle title={t('title')} subtitle={t('subtitle')} />
+        <div className="grid md:grid-cols-2 gap-8">
+          {skillsByCategory.map(({ category, label, skills }) => (
+            <div key={category}>
+              <h3 className="font-mono text-sm font-medium text-[var(--color-cyber-blue)] uppercase tracking-wider mb-4">
+                {label}
+              </h3>
+              <div className="space-y-3">
+                {skills.map((skill) => (
+                  <div key={skill.name}>
+                    <div className="flex justify-between items-center mb-1">
+                      <span className="text-sm font-medium text-[var(--color-foreground)]">
+                        {skill.name}
+                      </span>
+                      <span className="text-xs font-mono text-[var(--color-muted-foreground)]">
+                        {skill.level}%
+                      </span>
+                    </div>
+                    <div className="h-1.5 bg-[var(--color-secondary)] rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-[var(--color-cyber-blue)] rounded-full"
+                        style={{ width: `${skill.level}%` }}
+                      />
+                    </div>
                   </div>
-                  <div className="h-1.5 bg-[var(--color-secondary)] rounded-full overflow-hidden">
-                    <div
-                      className="h-full bg-[var(--color-cyber-blue)] rounded-full"
-                      style={{ width: `${skill.level}%` }}
-                    />
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </SectionWrapper>
   );

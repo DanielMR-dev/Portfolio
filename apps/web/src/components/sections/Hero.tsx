@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { ArrowDown, Terminal } from 'lucide-react';
+import { Terminal } from 'lucide-react';
 
 export function Hero() {
   const t = useTranslations('hero');
@@ -38,11 +38,6 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          {/* Available badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--color-cyber-green)]/30 bg-[var(--color-cyber-green)]/10 text-[var(--color-cyber-green)] text-xs font-mono mb-8">
-            <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-cyber-green)] animate-pulse" />
-            {t('available')}
-          </div>
         </motion.div>
 
         <motion.div
@@ -103,21 +98,6 @@ export function Hero() {
           </button>
         </motion.div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="text-[var(--color-muted-foreground)]"
-          >
-            <ArrowDown size={20} />
-          </motion.div>
-        </motion.div>
       </div>
     </section>
   );

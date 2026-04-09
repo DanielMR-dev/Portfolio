@@ -1,4 +1,6 @@
-import { useTranslations } from 'next-intl';
+'use client';
+
+import { useTranslations, useLocale } from 'next-intl';
 import { SectionWrapper } from '@/components/shared/SectionWrapper';
 import { SectionTitle } from '@/components/shared/SectionTitle';
 import { TechBadge } from '@/components/shared/TechBadge';
@@ -7,9 +9,12 @@ import { Briefcase } from 'lucide-react';
 
 export function Experience() {
   const t = useTranslations('experience');
+  const locale = useLocale();
+  const isEs = locale === 'es';
 
   return (
-    <SectionWrapper id="experience" className="bg-[var(--color-card)]/30">
+    <SectionWrapper id="experience">
+      <div className="rounded-2xl bg-[var(--color-card)] border border-[var(--color-border)] p-6 md:p-10">
       <SectionTitle title={t('title')} subtitle={t('subtitle')} />
 
       <div className="relative">
@@ -24,17 +29,19 @@ export function Experience() {
                 <Briefcase size={16} className="text-[var(--color-cyber-blue)]" />
               </div>
 
-              <div className="p-5 rounded-xl bg-[var(--color-card)] border border-[var(--color-border)]">
+              <div className="p-5 rounded-xl bg-(--color-secondary) border border-(--color-border)">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
                   <div>
                     <h3 className="font-semibold text-[var(--color-foreground)]">{item.title}</h3>
                     <p className="text-sm text-[var(--color-cyber-blue)]">{item.company}</p>
                   </div>
-                  <span className="text-xs font-mono text-[var(--color-muted-foreground)] bg-[var(--color-secondary)] px-2 py-1 rounded whitespace-nowrap">
-                    {item.period}
+                  <span className="text-xs font-mono text-[var(--color-muted-foreground)] bg-(--color-card) px-2 py-1 rounded whitespace-nowrap">
+                    {isEs ? item.periodEs : item.period}
                   </span>
                 </div>
-                <p className="text-sm text-[var(--color-muted-foreground)] mb-3">{item.description}</p>
+                <p className="text-sm text-[var(--color-muted-foreground)] mb-3">
+                  {isEs ? item.descriptionEs : item.description}
+                </p>
                 <div className="flex flex-wrap gap-1.5">
                   {item.tags.map((tag) => (
                     <TechBadge key={tag} name={tag} />
@@ -44,6 +51,7 @@ export function Experience() {
             </div>
           ))}
         </div>
+      </div>
       </div>
     </SectionWrapper>
   );

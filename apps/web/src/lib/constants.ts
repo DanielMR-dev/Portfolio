@@ -6,7 +6,7 @@ export const SOCIAL_LINKS = [
   },
   {
     name: 'LinkedIn',
-    url: 'https://linkedin.com/in/daniel-mira-restrepo',
+    url: 'https://linkedin.com/in/daniel-mira-restrepo-/',
     icon: 'linkedin',
   },
 ] as const;
@@ -45,17 +45,23 @@ export const EXPERIENCE = [
   {
     title: 'Purple Team Analyst',
     company: 'Security Operations',
-    period: '2023 - Present',
+    period: 'Present',
+    periodEs: 'Presente',
     description:
       'Conducting penetration tests, vulnerability assessments, and threat hunting. Building automated security tools and integrating offensive/defensive security practices.',
+    descriptionEs:
+      'Realizando pruebas de penetración, evaluaciones de vulnerabilidades y threat hunting. Construyendo herramientas de seguridad automatizadas e integrando prácticas ofensivas y defensivas.',
     tags: ['Python', 'Kali Linux', 'SIEM', 'Threat Intelligence'],
   },
   {
     title: 'Full Stack Developer',
-    company: 'Freelance',
-    period: '2022 - Present',
+    company: 'SAFITE SAS',
+    period: '2025 - 2026',
+    periodEs: '2025 - 2026',
     description:
       'Building web applications for clients using React, Next.js, and NestJS. Implementing security best practices in all projects.',
+    descriptionEs:
+      'Desarrollando aplicaciones web para clientes usando React, Next.js y NestJS. Implementando buenas prácticas de seguridad en todos los proyectos.',
     tags: ['React', 'Next.js', 'NestJS', 'PostgreSQL'],
   },
 ] as const;
@@ -73,7 +79,7 @@ export const PROJECTS = [
     imageUrl: null,
     repoUrl: 'https://github.com/DanielMR-dev/portfolio',
     liveUrl: null,
-    tags: ['Next.js', 'NestJS', 'TypeScript', 'PostgreSQL', 'TailwindCSS'],
+    tags: ['Next.js', 'TypeScript', 'TailwindCSS'],
     featured: true,
     order: 1,
   },

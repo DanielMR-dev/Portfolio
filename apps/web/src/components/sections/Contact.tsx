@@ -38,10 +38,10 @@ export function Contact() {
   const onSubmit = async (data: ContactForm) => {
     setStatus('loading');
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3001';
-      const res = await fetch(`${apiUrl}/api/v1/contact`, {
+      const endpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT ?? '';
+      const res = await fetch(endpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(data),
       });
       if (!res.ok) throw new Error('Failed');
@@ -62,6 +62,7 @@ export function Contact() {
 
   return (
     <SectionWrapper id="contact">
+      <div className="rounded-2xl bg-[var(--color-card)] border border-[var(--color-border)] p-6 md:p-10">
       <div className="grid lg:grid-cols-2 gap-12">
         {/* Left: info */}
         <div>
@@ -151,6 +152,7 @@ export function Contact() {
             {status === 'loading' ? t('form.submitting') : t('form.submit')}
           </button>
         </form>
+      </div>
       </div>
     </SectionWrapper>
   );

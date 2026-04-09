@@ -77,7 +77,7 @@
     }
   },
   "footer": {
-    "built_with": "Construido con Next.js y NestJS",
+    "built_with": "Construido con Next.js",
     "rights": "Todos los derechos reservados"
   },
   "theme": {
