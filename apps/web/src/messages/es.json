@@ -1,0 +1,87 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre mí",
+    "skills": "Habilidades",
+    "projects": "Proyectos",
+    "experience": "Experiencia",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "greeting": "Hola, soy",
+    "name": "Daniel Mira",
+    "role": "Ingeniero de Sistemas y Computación",
+    "tags": ["Purple Team", "Analista SOC", "Ethical Hacker", "Desarrollador Web"],
+    "cta_primary": "Ver proyectos",
+    "cta_secondary": "Contáctame",
+    "available": "Disponible para trabajo remoto"
+  },
+  "about": {
+    "title": "Sobre mí",
+    "subtitle": "Quién soy",
+    "bio": "Soy Ingeniero de Sistemas y Computación apasionado por la ciberseguridad y el desarrollo web. Me especializo en operaciones Purple Team, integrando prácticas ofensivas y defensivas para construir sistemas más resilientes.",
+    "bio2": "Con experiencia en ethical hacking, análisis SOC y desarrollo full-stack, aporto una mentalidad de seguridad ante todo en cada proyecto en el que trabajo.",
+    "values": {
+      "security": {
+        "title": "Seguridad primero",
+        "description": "Abordo cada proyecto con una mentalidad de seguridad, identificando vulnerabilidades antes de que se conviertan en problemas."
+      },
+      "learning": {
+        "title": "Aprendizaje continuo",
+        "description": "El panorama de seguridad evoluciona diariamente. Me mantengo al día con las últimas amenazas, herramientas y técnicas."
+      },
+      "quality": {
+        "title": "Código de calidad",
+        "description": "Código limpio, mantenible y bien documentado que perdura en el tiempo."
+      }
+    }
+  },
+  "skills": {
+    "title": "Habilidades",
+    "subtitle": "Tecnologías y herramientas con las que trabajo",
+    "categories": {
+      "languages": "Lenguajes",
+      "frameworks": "Frameworks y Librerías",
+      "security": "Herramientas de Seguridad",
+      "devops": "DevOps y Cloud"
+    }
+  },
+  "projects": {
+    "title": "Proyectos",
+    "subtitle": "Lo que he construido",
+    "filter_all": "Todos",
+    "view_code": "Código",
+    "view_live": "Demo",
+    "no_results": "No se encontraron proyectos para este filtro."
+  },
+  "experience": {
+    "title": "Experiencia",
+    "subtitle": "Mi trayectoria profesional"
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "Trabajemos juntos",
+    "description": "Actualmente estoy disponible para proyectos freelance y roles remotos de tiempo completo. Si tienes un proyecto interesante u oportunidad, hablemos.",
+    "form": {
+      "name": "Tu nombre",
+      "email": "Tu correo",
+      "subject": "Asunto (opcional)",
+      "message": "Tu mensaje",
+      "submit": "Enviar mensaje",
+      "submitting": "Enviando...",
+      "success": "¡Mensaje enviado! Te responderé pronto.",
+      "error": "Algo salió mal. Por favor intenta de nuevo."
+    },
+    "social": {
+      "title": "Encuéntrame en"
+    }
+  },
+  "footer": {
+    "built_with": "Construido con Next.js y NestJS",
+    "rights": "Todos los derechos reservados"
+  },
+  "theme": {
+    "toggle_light": "Cambiar a modo claro",
+    "toggle_dark": "Cambiar a modo oscuro"
+  }
+}

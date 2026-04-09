@@ -1,0 +1,87 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "name": "Daniel Mira",
+    "role": "Systems & Computer Engineering Graduate",
+    "tags": ["Purple Team", "SOC Analyst", "Ethical Hacker", "Web Developer"],
+    "cta_primary": "View Projects",
+    "cta_secondary": "Contact Me",
+    "available": "Available for remote work"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "Who I am",
+    "bio": "I'm a Systems and Computer Engineering graduate passionate about cybersecurity and web development. I specialize in Purple Team operations, bridging offensive and defensive security practices to build more resilient systems.",
+    "bio2": "With experience in ethical hacking, SOC analysis, and full-stack development, I bring a unique security-first mindset to every project I work on.",
+    "values": {
+      "security": {
+        "title": "Security First",
+        "description": "I approach every project with a security mindset, identifying vulnerabilities before they become problems."
+      },
+      "learning": {
+        "title": "Continuous Learning",
+        "description": "The security landscape evolves daily. I stay current with the latest threats, tools, and techniques."
+      },
+      "quality": {
+        "title": "Quality Code",
+        "description": "Clean, maintainable, and well-documented code that stands the test of time."
+      }
+    }
+  },
+  "skills": {
+    "title": "Skills",
+    "subtitle": "Technologies & tools I work with",
+    "categories": {
+      "languages": "Languages",
+      "frameworks": "Frameworks & Libraries",
+      "security": "Security Tools",
+      "devops": "DevOps & Cloud"
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Things I've built",
+    "filter_all": "All",
+    "view_code": "Code",
+    "view_live": "Live",
+    "no_results": "No projects found for this filter."
+  },
+  "experience": {
+    "title": "Experience",
+    "subtitle": "My professional journey"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Let's work together",
+    "description": "I'm currently available for freelance projects and remote full-time roles. If you have an interesting project or opportunity, let's talk.",
+    "form": {
+      "name": "Your Name",
+      "email": "Your Email",
+      "subject": "Subject (optional)",
+      "message": "Your Message",
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "success": "Message sent! I'll get back to you soon.",
+      "error": "Something went wrong. Please try again."
+    },
+    "social": {
+      "title": "Find me on"
+    }
+  },
+  "footer": {
+    "built_with": "Built with Next.js & NestJS",
+    "rights": "All rights reserved"
+  },
+  "theme": {
+    "toggle_light": "Switch to light mode",
+    "toggle_dark": "Switch to dark mode"
+  }
+}

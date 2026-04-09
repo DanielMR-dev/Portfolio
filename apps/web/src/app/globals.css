@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-mono);
+
+  /* Light mode */
+  --color-background: hsl(0 0% 100%);
+  --color-foreground: hsl(222 84% 5%);
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(222 84% 5%);
+  --color-primary: hsl(221 83% 53%);
+  --color-primary-foreground: hsl(210 40% 98%);
+  --color-secondary: hsl(210 40% 96%);
+  --color-secondary-foreground: hsl(222 47% 11%);
+  --color-muted: hsl(210 40% 96%);
+  --color-muted-foreground: hsl(215 16% 47%);
+  --color-border: hsl(214 32% 91%);
+  --color-ring: hsl(221 83% 53%);
+
+  /* Custom */
+  --color-cyber-blue: hsl(221 83% 63%);
+  --color-cyber-green: hsl(142 71% 45%);
+  --color-cyber-purple: hsl(262 83% 68%);
+
+  --radius: 0.5rem;
+}
+
+.dark {
+  --color-background: hsl(222 84% 5%);
+  --color-foreground: hsl(210 40% 98%);
+  --color-card: hsl(222 47% 9%);
+  --color-card-foreground: hsl(210 40% 98%);
+  --color-primary: hsl(221 83% 63%);
+  --color-primary-foreground: hsl(222 47% 11%);
+  --color-secondary: hsl(217 33% 17%);
+  --color-secondary-foreground: hsl(210 40% 98%);
+  --color-muted: hsl(217 33% 17%);
+  --color-muted-foreground: hsl(215 20% 65%);
+  --color-border: hsl(217 33% 17%);
+  --color-ring: hsl(221 83% 63%);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-muted-foreground) 30%, transparent);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--color-muted-foreground) 50%, transparent);
+}
