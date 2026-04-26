@@ -29,13 +29,13 @@ export function Experience() {
                 <Briefcase size={16} className="text-[var(--color-cyber-blue)]" />
               </div>
 
-              <div className="p-5 rounded-xl bg-(--color-secondary) border border-(--color-border)">
+              <div className="p-5 rounded-xl bg-[var(--color-secondary)] border border-[var(--color-border)]">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
                   <div>
                     <h3 className="font-semibold text-[var(--color-foreground)]">{item.title}</h3>
                     <p className="text-sm text-[var(--color-cyber-blue)]">{item.company}</p>
                   </div>
-                  <span className="text-xs font-mono text-[var(--color-muted-foreground)] bg-(--color-card) px-2 py-1 rounded whitespace-nowrap">
+                  <span className="text-xs font-mono text-[var(--color-muted-foreground)] bg-[var(--color-card)] px-2 py-1 rounded whitespace-nowrap">
                     {isEs ? item.periodEs : item.period}
                   </span>
                 </div>

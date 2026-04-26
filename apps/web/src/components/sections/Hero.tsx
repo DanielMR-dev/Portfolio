@@ -36,13 +36,6 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           <p className="text-[var(--color-muted-foreground)] font-mono text-lg mb-2">
@@ -97,7 +90,6 @@ export function Hero() {
             {t('cta_secondary')}
           </button>
         </motion.div>
-
       </div>
     </section>
   );

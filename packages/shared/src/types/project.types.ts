@@ -2,11 +2,13 @@ export interface Project {
   id: string;
   slug: string;
   title: string;
+  titleEs: string;
   description: string;
+  descriptionEs: string;
   imageUrl: string | null;
   repoUrl: string | null;
   liveUrl: string | null;
-  tags: string[];
+  tags: readonly string[];
   featured: boolean;
   order: number;
 }

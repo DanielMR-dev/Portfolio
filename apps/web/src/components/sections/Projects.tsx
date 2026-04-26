@@ -17,7 +17,7 @@ export function Projects() {
   const allTags = ['all', ...Array.from(new Set(PROJECTS.flatMap((p) => [...p.tags])))];
 
   const filtered =
-    activeTag === 'all' ? PROJECTS : PROJECTS.filter((p) => p.tags.includes(activeTag as never));
+    activeTag === 'all' ? [...PROJECTS] : PROJECTS.filter((p) => (p.tags as readonly string[]).includes(activeTag));
 
   return (
     <SectionWrapper id="projects">
@@ -67,7 +67,7 @@ export function Projects() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.3 }}
-                  className="p-5 rounded-xl bg-(--color-secondary) border border-(--color-border) flex flex-col gap-4 hover:border-cyber-blue/50 transition-colors"
+                  className="p-5 rounded-xl bg-[var(--color-secondary)] border border-[var(--color-border)] flex flex-col gap-4 hover:border-[var(--color-cyber-blue)]/50 transition-colors"
                 >
                   <div className="flex items-start justify-between gap-2">
                     <h3 className="font-semibold text-[var(--color-foreground)]">{title}</h3>

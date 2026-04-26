@@ -16,7 +16,7 @@ export function Skills() {
 
   return (
     <SectionWrapper id="skills">
-      <div className="rounded-2xl bg-(--color-card) border border-(--color-border) p-6 md:p-10">
+      <div className="rounded-2xl bg-[var(--color-card)] border border-[var(--color-border)] p-6 md:p-10">
         <SectionTitle title={t('title')} subtitle={t('subtitle')} />
         <div className="grid md:grid-cols-2 gap-8">
           {skillsByCategory.map(({ category, label, skills }) => (
