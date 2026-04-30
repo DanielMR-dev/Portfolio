@@ -1,0 +1,16 @@
+{
+  "project_name": "Portfolio",
+  "version": "1.0.0",
+  "agents": {
+    "portfolio-developer": "./agents/portfolio-developer.md",
+    "portfolio-planner": "./agents/portfolio-planner.md",
+    "portfolio-reviewer": "./agents/portfolio-reviewer.md"
+  },
+  "skills": {
+    "portfolio-standards": "./skills/portfolio-standards/SKILL.md"
+  },
+  "runtime_settings": {
+    "ai_providers": ["gemini", "opencode", "codex", "openai", "anthropic"],
+    "ignored_paths": [".next", "node_modules", "dist", ".turbo"]
+  }
+}

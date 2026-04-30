@@ -42,17 +42,17 @@ export const SKILLS = [
 ] as const;
 
 export const EXPERIENCE = [
-  {
-    title: 'Purple Team Analyst',
-    company: 'Security Operations',
-    period: 'Present',
-    periodEs: 'Presente',
-    description:
-      'Conducting penetration tests, vulnerability assessments, and threat hunting. Building automated security tools and integrating offensive/defensive security practices.',
-    descriptionEs:
-      'Realizando pruebas de penetración, evaluaciones de vulnerabilidades y threat hunting. Construyendo herramientas de seguridad automatizadas e integrando prácticas ofensivas y defensivas.',
-    tags: ['Python', 'Kali Linux', 'SIEM', 'Threat Intelligence'],
-  },
+  // {
+  //   title: 'Purple Team Analyst',
+  //   company: 'Freelancer',
+  //   period: 'Present',
+  //   periodEs: 'Presente',
+  //   description:
+  //     'Conducting penetration tests, vulnerability assessments, and threat hunting. Building automated security tools and integrating offensive/defensive security practices.',
+  //   descriptionEs:
+  //     'Realizando pruebas de penetración, evaluaciones de vulnerabilidades y threat hunting. Construyendo herramientas de seguridad automatizadas e integrando prácticas ofensivas y defensivas.',
+  //   tags: ['Python', 'Kali Linux', 'SIEM', 'Threat Intelligence'],
+  // },
   {
     title: 'Full Stack Developer',
     company: 'SAFITE SAS',
