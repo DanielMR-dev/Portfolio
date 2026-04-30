@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
-import { SectionWrapper } from '@/components/shared/SectionWrapper';
-import { SectionTitle } from '@/components/shared/SectionTitle';
+import { SectionWrapper } from '@/components/ui/SectionWrapper';
+import { SectionTitle } from '@/components/ui/SectionTitle';
 import { SKILLS } from '@/lib/constants';
 
 const CATEGORY_ORDER = ['languages', 'frameworks', 'security', 'devops'] as const;

@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
-import { SectionWrapper } from '@/components/shared/SectionWrapper';
-import { SectionTitle } from '@/components/shared/SectionTitle';
-import { TechBadge } from '@/components/shared/TechBadge';
+import { SectionWrapper } from '@/components/ui/SectionWrapper';
+import { SectionTitle } from '@/components/ui/SectionTitle';
+import { TechBadge } from '@/components/ui/TechBadge';
 import { PROJECTS } from '@/lib/constants';
 
 export function Projects() {

@@ -6,8 +6,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useState } from 'react';
 import { Github, Linkedin, Send } from 'lucide-react';
-import { SectionWrapper } from '@/components/shared/SectionWrapper';
-import { SectionTitle } from '@/components/shared/SectionTitle';
+import { SectionWrapper } from '@/components/ui/SectionWrapper';
+import { SectionTitle } from '@/components/ui/SectionTitle';
 import { SOCIAL_LINKS } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 

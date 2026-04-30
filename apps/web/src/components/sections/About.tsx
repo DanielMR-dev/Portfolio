@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
-import { SectionWrapper } from '@/components/shared/SectionWrapper';
-import { SectionTitle } from '@/components/shared/SectionTitle';
+import { SectionWrapper } from '@/components/ui/SectionWrapper';
+import { SectionTitle } from '@/components/ui/SectionTitle';
 import { Shield, BookOpen, Code2 } from 'lucide-react';
 
 const VALUE_ICONS = {

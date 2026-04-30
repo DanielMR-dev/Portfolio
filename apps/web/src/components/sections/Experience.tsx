@@ -1,9 +1,9 @@
 'use client';
 
 import { useTranslations, useLocale } from 'next-intl';
-import { SectionWrapper } from '@/components/shared/SectionWrapper';
-import { SectionTitle } from '@/components/shared/SectionTitle';
-import { TechBadge } from '@/components/shared/TechBadge';
+import { SectionWrapper } from '@/components/ui/SectionWrapper';
+import { SectionTitle } from '@/components/ui/SectionTitle';
+import { TechBadge } from '@/components/ui/TechBadge';
 import { EXPERIENCE } from '@/lib/constants';
 import { Briefcase } from 'lucide-react';
 
