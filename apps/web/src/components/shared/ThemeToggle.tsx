@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
 import { Moon, Sun } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -10,10 +11,25 @@ interface ThemeToggleProps {
 }
 
 export function ThemeToggle({ className }: ThemeToggleProps) {
-  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const { setTheme, resolvedTheme } = useTheme();
   const t = useTranslations('theme');
 
-  const isDark = theme === 'dark';
+  // Avoid hydration mismatch by rendering nothing (or a placeholder) until mounted
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <div
+        className={cn('p-2 w-9 h-9', className)}
+        aria-hidden="true"
+      />
+    );
+  }
+
+  const isDark = resolvedTheme === 'dark';
 
   return (
     <button

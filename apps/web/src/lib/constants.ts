@@ -59,10 +59,10 @@ export const EXPERIENCE = [
     period: '2025 - 2026',
     periodEs: '2025 - 2026',
     description:
-      'Building web applications for clients using React, Next.js, and NestJS. Implementing security best practices in all projects.',
+      'Responsible for the development of systems and applications, ensuring the functionality, scalability and optimal maintenance of technological solutions. Ensure code quality, database integration and compliance with the requirements established by customers and users.',
     descriptionEs:
-      'Desarrollando aplicaciones web para clientes usando React, Next.js y NestJS. Implementando buenas prácticas de seguridad en todos los proyectos.',
-    tags: ['React', 'Next.js', 'NestJS', 'PostgreSQL'],
+      'Encargado de la creación y el mantenimiento del software, análisis y diseño de Sistemas de Información, desarrollo de código y lenguaje de Programación, determinación de la estructura (arquitectura) del software, definir especificación y tareas de investigación, diseño y desarrollo de programas, documentar los trabajos realizados, participar en reuniones técnicas y ajustándose a las especificaciones solicitadas, elaboración de los manuales de uso y la documentación técnica del mismo.',
+    tags: ['PHP', 'React', 'MySQL', 'Microsoft SQL Server', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'Bootstrap', 'Laravel', 'Figma', 'Git', 'GitHub', 'Jira', 'Scrum'],
   },
 ] as const;
 
@@ -79,7 +79,7 @@ export const PROJECTS = [
     imageUrl: null,
     repoUrl: 'https://github.com/DanielMR-dev/portfolio',
     liveUrl: null,
-    tags: ['Next.js', 'TypeScript', 'TailwindCSS'],
+    tags: ['Next.js', 'TypeScript', 'TailwindCSS', 'Turbopack'],
     featured: true,
     order: 1,
   },
