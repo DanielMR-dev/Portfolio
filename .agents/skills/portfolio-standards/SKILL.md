@@ -8,8 +8,6 @@ compatibility: opencode
 
 - **Language**: TypeScript (strict mode — `"strict": true` in tsconfig, no `any` ever)
 - **Frontend**: Next.js 15 with App Router — never Pages Router
-- **Backend**: NestJS with TypeScript — module/controller/service/repository pattern
-- **ORM**: Prisma + PostgreSQL
 - **Package manager**: pnpm — never npm or yarn
 - **Node version**: 20 LTS (minimum)
 
@@ -18,37 +16,27 @@ compatibility: opencode
 ## Project structure
 
 ```
-/
-├── frontend/                    ← Next.js 15 App Router
-│   ├── app/                     ← Routes, layouts, pages (Server Components by default)
-│   │   ├── layout.tsx
-│   │   ├── page.tsx
-│   │   └── [feature]/
-│   │       ├── page.tsx
-│   │       └── _components/     ← Route-scoped components
-│   ├── components/              ← Shared/global components
-│   │   └── ui/                  ← shadcn/ui primitives (never modified manually)
-│   ├── hooks/                   ← Custom React hooks (prefix: "use")
-│   ├── lib/                     ← Utilities, fetchers, helpers
-│   ├── types/                   ← Frontend-only TypeScript types
-│   └── public/                  ← Static assets
+/                                   # Monorepo root
+├── apps/
+│   └── web/                        # Next.js 15 portfolio app
+│       ├── public/                 # Static assets
+│       └── src/
+│           ├── app/                # Routes, layouts, pages
+│           │   ├── globals.css     # Global styles & design tokens
+│           │   ├── layout.tsx      # Root HTML layout (fonts)
+│           │   └── [locale]/       # Bilingual pages (EN/ES)
+│           ├── components/         # Reusable UI components
+│           │   ├── layout/         # Header, Footer, etc.
+│           │   ├── sections/       # Hero, About, Projects, Experience, Contact
+│           │   └── shared/         # Common primitive sub-components
+│           ├── i18n/               # next-intl configuration
+│           ├── lib/                # helper constants and utilities
+│           └── messages/           # Translation JSON files (en.json, es.json)
 │
-├── backend/                     ← NestJS REST API
-│   └── src/
-│       ├── main.ts              ← Bootstrap only
-│       ├── app.module.ts        ← Root module
-│       └── [feature]/           ← One folder per domain feature
-│           ├── [feature].module.ts
-│           ├── [feature].controller.ts
-│           ├── [feature].service.ts
-│           ├── [feature].repository.ts   ← Prisma queries only
-│           └── dto/
-│               ├── create-[feature].dto.ts
-│               └── update-[feature].dto.ts
-│
-└── shared/                      ← Shared TypeScript types (consumed by both sides)
-    └── src/
-        └── types/
+└── packages/
+    └── shared/                     # Internal shared package (@portfolio/shared)
+        └── src/
+            └── index.ts            # Shared types & utilities
 ```
 
 ---
@@ -56,22 +44,18 @@ compatibility: opencode
 ## Naming conventions
 
 ```
-PascalCase        → React components, NestJS classes, TypeScript interfaces/types
+PascalCase        → React components, TypeScript interfaces/types
 camelCase         → functions, variables, props, object keys
-kebab-case        → file names, folder names, REST endpoints, CSS class names
+kebab-case        → file names, folder names, CSS class names
 SCREAMING_SNAKE   → environment variables, global constants
 use + PascalCase  → custom React hooks (e.g. useProjects, useAuth)
-Dto suffix        → NestJS Data Transfer Objects (e.g. CreateProjectDto)
 ```
 
 ### File naming examples
 ```
 ✓  ProjectCard.tsx           ← React component
 ✓  useProjects.ts            ← custom hook
-✓  create-project.dto.ts     ← NestJS DTO
-✓  projects.service.ts       ← NestJS service
 ✗  projectcard.tsx           ← wrong case
-✗  ProjectsService.ts        ← wrong — file names are kebab-case
 ```
 
 ---
@@ -84,7 +68,7 @@ Dto suffix        → NestJS Data Transfer Objects (e.g. CreateProjectDto)
 - Prefer `interface` over `type` for object shapes that may be extended
 - Use `type` for unions, intersections, and utility types
 - All function parameters and return types must be explicitly typed — no implicit returns
-- Shared types between frontend and backend live in `/shared` and are imported from there
+- Shared types between workspaces live in `packages/shared` and are imported from `@portfolio/shared`
 
 ```typescript
 // WRONG
@@ -155,127 +139,18 @@ function ProjectsPage() {
 
 ---
 
-## Backend rules (NestJS)
-
-### Layer responsibilities
-```
-Controller  → HTTP only: receives request, calls service, returns response. Zero business logic.
-Service     → Business logic only. Calls repository, transforms data, applies rules.
-Repository  → Prisma queries only. No business logic, no HTTP concerns.
-Module      → Wires together controller, service, repository, and imports.
-```
-
-### DTOs — always use class-validator
-```typescript
-import { IsString, IsNotEmpty, IsOptional, IsUrl, MinLength } from 'class-validator';
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-
-export class CreateProjectDto {
-  @ApiProperty({ description: 'Project title', example: 'Portfolio Website' })
-  @IsString()
-  @IsNotEmpty()
-  @MinLength(3)
-  title: string;
-
-  @ApiPropertyOptional({ description: 'Project description' })
-  @IsString()
-  @IsOptional()
-  description?: string;
-
-  @ApiPropertyOptional({ description: 'Live demo URL' })
-  @IsUrl()
-  @IsOptional()
-  demoUrl?: string;
-}
-```
-
-### Error handling
-```typescript
-// CORRECT — explicit HTTP exception with context
-if (!project) {
-  throw new NotFoundException(`Project with id "${id}" not found`);
-}
-
-// WRONG — generic error with no context
-if (!project) {
-  throw new Error('Not found');
-}
-```
-
-### Swagger — all endpoints must be documented
-```typescript
-@ApiTags('projects')
-@Controller('projects')
-export class ProjectsController {
-  @Get(':id')
-  @ApiOperation({ summary: 'Get project by ID' })
-  @ApiParam({ name: 'id', description: 'Project UUID' })
-  @ApiOkResponse({ type: ProjectResponseDto })
-  @ApiNotFoundResponse({ description: 'Project not found' })
-  findOne(@Param('id') id: string) {
-    return this.projectsService.findOne(id);
-  }
-}
-```
-
-### Response transformation
-- Use interceptors to normalize API responses — never return raw Prisma entities
-- Define response DTOs separately from input DTOs
-- Use `ClassSerializerInterceptor` with `@Exclude()` to strip sensitive fields
-
-### Authentication
-- Use Guards for all protected routes — never check auth inside a service
-- JWT strategy via `@nestjs/jwt` and `@nestjs/passport`
-- Decorate protected routes with `@UseGuards(JwtAuthGuard)`
-
----
-
-## Prisma rules
-
-- Schema lives at `backend/prisma/schema.prisma`
-- **Never run raw SQL** — use Prisma Client methods
-- Migrations are created with `pnpm prisma migrate dev` — never edit migration files manually
-- Seed data lives in `backend/prisma/seed.ts`
-- All database calls live in repository files — never call `prisma` from a service or controller directly
-
-```typescript
-// CORRECT — repository is the only Prisma consumer
-@Injectable()
-export class ProjectsRepository {
-  constructor(private readonly prisma: PrismaService) {}
-
-  async findById(id: string): Promise<Project | null> {
-    return this.prisma.project.findUnique({ where: { id } });
-  }
-}
-
-// WRONG — service calls Prisma directly
-@Injectable()
-export class ProjectsService {
-  constructor(private readonly prisma: PrismaService) {} // never
-}
-```
-
----
-
 ## Code quality gates
 
 All code produced or modified must pass these checks before being considered complete:
 
 ```bash
-# Frontend
-pnpm --filter frontend type-check      # tsc --noEmit — zero errors
-pnpm --filter frontend lint            # ESLint — zero warnings, zero errors
-pnpm --filter frontend build           # production build must succeed
+# Frontend (web app)
+pnpm --filter web type-check      # tsc --noEmit — zero errors
+pnpm --filter web lint            # ESLint — zero warnings, zero errors
+pnpm --filter web build           # production build must succeed
 
-# Backend
-pnpm --filter backend type-check       # tsc --noEmit — zero errors
-pnpm --filter backend lint             # ESLint — zero warnings, zero errors
-pnpm --filter backend test             # all unit tests pass
-pnpm --filter backend test:e2e         # all e2e tests pass
-
-# Shared
-pnpm --filter shared type-check        # tsc --noEmit — zero errors
+# Shared Package
+pnpm --filter shared type-check    # tsc --noEmit — zero errors
 ```
 
 No `// eslint-disable` comments without an inline explanation of why the rule is a false positive in that specific case.
@@ -303,38 +178,6 @@ it('sets isLoading to false after fetch', () => {
 });
 ```
 
-### Backend (Jest + Supertest)
-- Unit tests for services: mock the repository, test business logic
-- e2e tests in `test/` directory: spin up the full app and hit real endpoints
-- Use `@nestjs/testing` `Test.createTestingModule()` for unit tests
-- Every service method needs at least one unit test
-- Every controller endpoint needs at least one e2e test
-
-```typescript
-// Service unit test pattern
-describe('ProjectsService', () => {
-  let service: ProjectsService;
-  let repository: jest.Mocked<ProjectsRepository>;
-
-  beforeEach(async () => {
-    const module = await Test.createTestingModule({
-      providers: [
-        ProjectsService,
-        { provide: ProjectsRepository, useValue: { findById: jest.fn() } },
-      ],
-    }).compile();
-
-    service = module.get(ProjectsService);
-    repository = module.get(ProjectsRepository);
-  });
-
-  it('throws NotFoundException when project does not exist', async () => {
-    repository.findById.mockResolvedValue(null);
-    await expect(service.findOne('non-existent-id')).rejects.toThrow(NotFoundException);
-  });
-});
-```
-
 ---
 
 ## Environment and configuration
@@ -342,7 +185,6 @@ describe('ProjectsService', () => {
 - **Never hardcode secrets** — all secrets live in `.env` files (gitignored)
 - `.env.example` documents every variable with a description — keep it up to date
 - Frontend env vars exposed to the browser must be prefixed with `NEXT_PUBLIC_`
-- Backend uses `@nestjs/config` with a validation schema (class-validator) for all env vars
 - Never commit `.env`, `.env.local`, or any file with real credentials
 
 ---
@@ -365,17 +207,17 @@ Imports must be ordered in this sequence (ESLint enforces this):
 import { join } from 'path';
 
 // 2. External packages
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 // 3. Shared workspace packages
 import type { Project } from '@portfolio/shared';
 
 // 4. Internal absolute imports (using path aliases)
-import { PrismaService } from '@/prisma/prisma.service';
+import { cn } from '@/lib/utils';
 
 // 5. Relative imports
-import { CreateProjectDto } from './dto/create-project.dto';
+import { ProjectCard } from './ProjectCard';
 ```
 
 ---
