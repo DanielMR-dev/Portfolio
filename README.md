@@ -10,18 +10,6 @@
 
 ---
 
-## Table of Contents
-
-- [Overview](#overview)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-- [Environment Variables](#environment-variables)
-- [Available Scripts](#available-scripts)
-- [Key Features](#key-features)
-
----
-
 ## Overview
 
 This is a **monorepo** managed with [Turborepo](https://turbo.build) and [pnpm workspaces](https://pnpm.io/workspaces). It contains the main portfolio web application and a shared utilities package.
