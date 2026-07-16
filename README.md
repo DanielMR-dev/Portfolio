@@ -71,16 +71,45 @@ The portfolio is a single-page application with smooth scroll navigation, biling
 
 - **Monorepo** — Turborepo pipeline with task caching for fast builds
 - **Bilingual** — Full EN / ES support via `next-intl` with locale-prefixed URLs (`/en`, `/es`)
-- **Dark / Light mode** — Persistent theme via `next-themes`, toggled from the header
-- **Animated profile frame** — CSS conic-gradient rotating ring + pulsing glow using Framer Motion
-- **Scroll animations** — Sections fade in on scroll with `framer-motion` + `whileInView`
+- **Galactic Dark Mode** — Pure CSS procedural galactic background using `radial-gradient` and vignette effects, avoiding Canvas/Three.js overhead.
+- **Accessible Design** — Fully responsive, semantic HTML, comprehensive ARIA attributes (focus rings, live regions), and strict WCAG AA contrast.
+- **Reduced Motion Support** — Uses Framer Motion's `useReducedMotion` to respect user OS preferences by providing simplified, instant transitions.
+- **Dynamic Documents** — Build-time detection of local resumes/CVs allowing conditional rendering of download CTAs.
 - **Contact form** — Validated with Zod + React Hook Form, submitted to Formspree
 - **SEO ready** — Canonical URLs, `sitemap.xml`, `robots.txt`, meta tags per locale
-- **Design system** — CSS custom properties for all colors (light & dark), shared via `globals.css`
-- **Image optimization** — Next.js `<Image>` with AVIF/WebP formats
+- **Image optimization** — Next.js `<Image>` with AVIF/WebP formats, paired with visual placeholders when source assets are missing.
+
+---
+
+## Configuration & Usage
+
+### Environment Variables
+To enable the contact form, create a `.env.local` file in `apps/web/` with your Formspree endpoint:
+```env
+NEXT_PUBLIC_FORMSPREE_ENDPOINT=https://formspree.io/f/your_endpoint_id
+```
+
+### Resume / CV Files
+The portfolio conditionally renders "Download CV" buttons based on the presence of the PDF files at build time. Place your files here:
+- `apps/web/public/documents/daniel-mira-cv-es.pdf` (Spanish)
+- `apps/web/public/documents/daniel-mira-resume-en.pdf` (English)
+
+### Project Assets
+Project overview images should be placed in `apps/web/public/projects/`. 
+For example, the featured NetSentinel project uses:
+- `apps/web/public/projects/netsentinel/overview.webp`
+
+If an image is missing, the portfolio will safely fallback to an accessible icon-based placeholder.
+
+### Development Commands
+Run the following commands from the root of the repository:
+- `pnpm dev`: Start the development server.
+- `pnpm lint`: Run ESLint checks.
+- `pnpm typecheck`: Run TypeScript typechecking without emitting files.
+- `pnpm build`: Build the production bundle.
 
 ---
 
 ## License
 
-This project is private. All rights reserved © Daniel Mira.
+The source code for this project is publicly visible and available for review. However, all personal content, text, data, and visual resources are reserved © Daniel Mira.

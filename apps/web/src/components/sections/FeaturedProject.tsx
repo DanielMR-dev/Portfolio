@@ -2,6 +2,8 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import { ExternalLink, Github, Terminal } from 'lucide-react';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { SectionWrapper } from '@/components/ui/SectionWrapper';
 import { TechBadge } from '@/components/ui/TechBadge';
 import { PROJECTS } from '@/lib/constants';
@@ -22,9 +24,14 @@ export function FeaturedProject() {
 
   return (
     <SectionWrapper id="featured-project">
-      <div className="rounded-3xl bg-[var(--color-card)] border border-[var(--color-border)] p-6 md:p-12 overflow-hidden relative">
-        {/* Decorative background glow */}
-        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-[var(--color-primary)]/5 rounded-full blur-3xl pointer-events-none" />
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="rounded-3xl bg-[var(--color-card)] border border-[var(--color-border)] p-6 md:p-12 overflow-hidden relative"
+      >
+        {/* Decorative background faint nebula - respects reduced motion */}
+        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-[var(--color-cyber-purple)]/5 rounded-full blur-[80px] pointer-events-none" />
 
         <div className="flex flex-col lg:flex-row gap-12 relative z-10">
           
@@ -50,13 +57,13 @@ export function FeaturedProject() {
             <div className="space-y-4 mb-8">
               {problem && (
                 <div>
-                  <h4 className="text-sm font-semibold text-[var(--color-foreground)] uppercase tracking-wide mb-1 opacity-80">Problem</h4>
+                  <h4 className="text-sm font-semibold text-[var(--color-foreground)] uppercase tracking-wide mb-1 opacity-80">{t('featured.problem')}</h4>
                   <p className="text-sm text-[var(--color-muted-foreground)]">{problem}</p>
                 </div>
               )}
               {solution && (
                 <div>
-                  <h4 className="text-sm font-semibold text-[var(--color-foreground)] uppercase tracking-wide mb-1 opacity-80">Solution</h4>
+                  <h4 className="text-sm font-semibold text-[var(--color-foreground)] uppercase tracking-wide mb-1 opacity-80">{t('featured.solution')}</h4>
                   <p className="text-sm text-[var(--color-muted-foreground)]">{solution}</p>
                 </div>
               )}
@@ -64,7 +71,7 @@ export function FeaturedProject() {
 
             <div className="mb-8">
               <h4 className="text-sm font-semibold text-[var(--color-foreground)] uppercase tracking-wide mb-3 opacity-80">
-                Capabilities
+                {t('featured.capabilities')}
               </h4>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {featuredProject.highlights?.map((hl, idx) => (
@@ -88,7 +95,7 @@ export function FeaturedProject() {
                   href={featuredProject.repoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-5 py-2.5 bg-[var(--color-secondary)] text-[var(--color-foreground)] border border-[var(--color-border)] hover:border-[var(--color-primary)] rounded-lg font-medium transition-colors"
+                  className="flex items-center justify-center gap-2 px-5 py-2.5 bg-[var(--color-secondary)] text-[var(--color-foreground)] border border-[var(--color-border)] hover:border-[var(--color-primary)] rounded-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
                 >
                   <Github size={18} />
                   {t('view_code')}
@@ -97,7 +104,7 @@ export function FeaturedProject() {
               {featuredProject.caseStudyUrl && (
                 <a
                   href={featuredProject.caseStudyUrl}
-                  className="flex items-center justify-center gap-2 px-5 py-2.5 text-[var(--color-primary)] hover:bg-[var(--color-primary)]/10 rounded-lg font-medium transition-colors"
+                  className="flex items-center justify-center gap-2 px-5 py-2.5 text-[var(--color-primary)] hover:bg-[var(--color-primary)]/10 rounded-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
                 >
                   <ExternalLink size={18} />
                   {t('case_study')}
@@ -106,29 +113,29 @@ export function FeaturedProject() {
             </div>
           </div>
 
-          {/* Visual Column (Placeholder since image is undefined currently) */}
+          {/* Visual Column */}
           <div className="flex-1 lg:w-1/2 flex items-center justify-center">
             <div className="w-full aspect-[4/3] rounded-2xl border border-[var(--color-border)] bg-[var(--color-secondary)] overflow-hidden relative group">
-              {/* If an image exists we would render it here, otherwise this placeholder */}
               {featuredProject.imageUrl ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img 
+                <Image 
                   src={featuredProject.imageUrl} 
                   alt={locale === 'es' ? featuredProject.imageAlt?.es || title : featuredProject.imageAlt?.en || title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:group-hover:scale-100"
                 />
               ) : (
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-[var(--color-muted-foreground)]/50 p-8 text-center bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-card)]">
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-[var(--color-muted-foreground)]/50 p-8 text-center bg-[var(--color-secondary)]">
                   <Terminal size={64} className="mb-4 opacity-20" />
-                  <p className="font-mono text-sm opacity-60">Visual representation pending</p>
-                  <p className="font-mono text-xs opacity-40 mt-2">&gt; _ running NetSentinel engine...</p>
+                  <p className="font-mono text-sm opacity-60">{t('featured.visual_pending')}</p>
+                  <p className="font-mono text-xs opacity-40 mt-2">{t('featured.engine_running')}</p>
                 </div>
               )}
             </div>
           </div>
 
         </div>
-      </div>
+      </motion.div>
     </SectionWrapper>
   );
 }

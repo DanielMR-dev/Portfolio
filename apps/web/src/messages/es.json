@@ -1,10 +1,11 @@
 {
   "nav": {
     "home": "Inicio",
-    "about": "Sobre mí",
-    "skills": "Habilidades",
-    "projects": "Proyectos",
+    "featured-project": "Destacado",
     "experience": "Experiencia",
+    "projects": "Proyectos",
+    "skills": "Habilidades",
+    "about": "Sobre mí",
     "contact": "Contacto"
   },
   "hero": {
@@ -21,8 +22,8 @@
   "about": {
     "title": "Sobre mí",
     "subtitle": "Quién soy",
-    "bio": "Soy Ingeniero de Sistemas y Computación apasionado por la ciberseguridad y el desarrollo web. Me especializo en operaciones Purple Team, integrando prácticas ofensivas y defensivas para construir sistemas más resilientes.",
-    "bio2": "Con experiencia en ethical hacking, análisis SOC y desarrollo full-stack, aporto una mentalidad de seguridad ante todo en cada proyecto en el que trabajo.",
+    "bio": "Soy Ingeniero de Sistemas y Computación enfocado en el desarrollo de software moderno y seguro. Mi experiencia combina desarrollo web, integración de APIs, bases de datos y diseño de interfaces, junto con formación y proyectos personales relacionados con redes, seguridad defensiva y ethical hacking.",
+    "bio2": "Actualmente desarrollo NetSentinel, una herramienta nativa de auditoría de redes que me permite profundizar en Rust, concurrencia, protocolos de red y análisis de servicios desde una perspectiva Blue Team y Purple Team.",
     "values": {
       "security": {
         "title": "Seguridad primero",
@@ -60,11 +61,19 @@
     "internal_badge": "Proyecto interno",
     "no_results": "No se encontraron proyectos para este filtro.",
     "confidential_note": "El código fuente de este proyecto no es público por razones de confidencialidad.",
+    "automation_badge": "Automatización",
     "status": {
       "active-development": "En desarrollo activo",
       "functional-prototype": "Prototipo funcional",
       "completed": "Completado",
       "internal": "Interno"
+    },
+    "featured": {
+      "problem": "Problema",
+      "solution": "Solución",
+      "capabilities": "Capacidades",
+      "visual_pending": "Representación visual pendiente",
+      "engine_running": "> _ ejecutando motor NetSentinel..."
     }
   },
   "experience": {

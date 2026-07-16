@@ -11,10 +11,10 @@ export default function HomePage() {
     <>
       <Hero />
       <FeaturedProject />
-      <About />
-      <Skills />
-      <Projects />
       <Experience />
+      <Projects />
+      <Skills />
+      <About />
       <Contact />
     </>
   );

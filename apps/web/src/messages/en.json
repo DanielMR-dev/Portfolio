@@ -1,10 +1,11 @@
 {
   "nav": {
     "home": "Home",
-    "about": "About",
-    "skills": "Skills",
-    "projects": "Projects",
+    "featured-project": "Featured",
     "experience": "Experience",
+    "projects": "Projects",
+    "skills": "Skills",
+    "about": "About",
     "contact": "Contact"
   },
   "hero": {
@@ -21,8 +22,8 @@
   "about": {
     "title": "About Me",
     "subtitle": "Who I am",
-    "bio": "I'm a Systems and Computer Engineering graduate passionate about cybersecurity and web development. I specialize in Purple Team operations, bridging offensive and defensive security practices to build more resilient systems.",
-    "bio2": "With experience in ethical hacking, SOC analysis, and full-stack development, I bring a unique security-first mindset to every project I work on.",
+    "bio": "I am a Systems and Computer Engineer focused on modern and secure software development. My experience combines web development, API integration, databases, and interface design, along with training and personal projects related to networking, defensive security, and ethical hacking.",
+    "bio2": "I am currently developing NetSentinel, a native network auditing tool that allows me to delve into Rust, concurrency, network protocols, and service analysis from a Blue Team and Purple Team perspective.",
     "values": {
       "security": {
         "title": "Security First",
@@ -60,11 +61,19 @@
     "internal_badge": "Internal project",
     "no_results": "No projects found for this filter.",
     "confidential_note": "The source code for this project is not public due to confidentiality reasons.",
+    "automation_badge": "Automation",
     "status": {
       "active-development": "Active development",
       "functional-prototype": "Functional prototype",
       "completed": "Completed",
       "internal": "Internal"
+    },
+    "featured": {
+      "problem": "Problem",
+      "solution": "Solution",
+      "capabilities": "Capabilities",
+      "visual_pending": "Visual representation pending",
+      "engine_running": "> _ running NetSentinel engine..."
     }
   },
   "experience": {

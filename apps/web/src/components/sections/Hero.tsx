@@ -2,8 +2,9 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Terminal, Download, ArrowRight } from 'lucide-react';
+import { Terminal, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
+import { DownloadResumeButton } from '@/components/ui/DownloadResumeButton';
 
 export function Hero() {
   const t = useTranslations('hero');
@@ -14,12 +15,11 @@ export function Hero() {
   };
 
   const tags = t.raw('tags') as string[];
-  const cvLink = locale === 'es' ? '/documents/daniel-mira-cv-es.pdf' : '/documents/daniel-mira-resume-en.pdf';
 
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 pt-20 pb-10 md:py-0"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 pt-20 pb-10 md:py-0 bg-transparent"
     >
       <div className="max-w-6xl mx-auto w-full flex flex-col-reverse md:flex-row items-center justify-between gap-12 relative z-10">
         
@@ -28,12 +28,21 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="flex-1 text-center md:text-left flex flex-col items-center md:items-start"
+          className="flex-1 text-center md:text-left flex flex-col items-center md:items-start relative"
         >
-          <div className="mb-6 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--color-secondary)] border border-[var(--color-border)] text-sm font-medium text-[var(--color-cyber-green)]">
+          {/* Faint blur blob to ensure text readability over stars without a rigid box */}
+          <div 
+            className="absolute inset-[-30%] -z-10 backdrop-blur-md bg-[var(--color-background)]/30 pointer-events-none"
+            style={{ 
+              maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 70%)', 
+              WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 70%)' 
+            }}
+          />
+
+          <div className="mb-6 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-transparent border border-[var(--color-border)] text-sm font-medium text-[var(--color-muted-foreground)]">
             <span className="relative flex w-2 h-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--color-cyber-green)] opacity-75"></span>
-              <span className="relative inline-flex rounded-full w-2 h-2 bg-[var(--color-cyber-green)]"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--color-cyber-blue)] opacity-75 motion-reduce:hidden"></span>
+              <span className="relative inline-flex rounded-full w-2 h-2 bg-[var(--color-cyber-blue)]"></span>
             </span>
             {t('available')}
           </div>
@@ -44,7 +53,7 @@ export function Hero() {
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-[var(--color-foreground)] mb-4 tracking-tight">
             {t('name')}
           </h1>
-          <p className="text-xl md:text-2xl font-medium text-[var(--color-cyber-blue)] mb-4">
+          <p className="text-xl md:text-2xl font-medium text-[var(--color-muted-foreground)] mb-4">
             {t('role')}
           </p>
           <p className="text-base md:text-lg text-[var(--color-muted-foreground)] mb-8 max-w-xl text-balance">
@@ -56,9 +65,9 @@ export function Hero() {
             {tags.map((tag, i) => (
               <span
                 key={tag}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono bg-[var(--color-secondary)] text-[var(--color-secondary-foreground)] border border-[var(--color-border)]"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono bg-[var(--color-secondary)]/50 backdrop-blur-sm text-[var(--color-foreground)] border border-[var(--color-border)]"
               >
-                <Terminal size={12} className="text-[var(--color-cyber-blue)]" />
+                <Terminal size={12} className="text-[var(--color-cyber-purple)]" />
                 {tag}
               </span>
             ))}
@@ -68,23 +77,17 @@ export function Hero() {
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
             <a
               href="#featured-project"
-              className="group flex items-center justify-center gap-2 px-6 py-3 bg-[var(--color-primary)] text-[var(--color-primary-foreground)] rounded-lg font-medium hover:opacity-90 transition-all w-full sm:w-auto"
+              className="group flex items-center justify-center gap-2 px-6 py-3 bg-[var(--color-primary)] text-[var(--color-primary-foreground)] rounded-lg font-medium hover:bg-white hover:text-black transition-all w-full sm:w-auto"
             >
               {t('cta_primary')}
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform motion-reduce:group-hover:translate-x-0" />
             </a>
-            <a
-              href={cvLink}
-              target="_blank"
-              download
-              className="flex items-center justify-center gap-2 px-6 py-3 border border-[var(--color-border)] text-[var(--color-foreground)] rounded-lg font-medium hover:bg-[var(--color-secondary)] transition-colors w-full sm:w-auto"
-            >
-              <Download size={18} />
-              {t('cta_secondary')}
-            </a>
+            
+            <DownloadResumeButton className="w-full sm:w-auto" />
+            
             <button
               onClick={scrollToContact}
-              className="flex items-center justify-center gap-2 px-6 py-3 border border-transparent text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] rounded-lg font-medium transition-colors w-full sm:w-auto"
+              className="flex items-center justify-center gap-2 px-6 py-3 bg-transparent text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] rounded-lg font-medium transition-colors w-full sm:w-auto"
             >
               {t('cta_tertiary')}
             </button>
@@ -96,19 +99,18 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
-          className="flex-1 flex justify-center md:justify-end"
+          className="flex-1 flex justify-center md:justify-end relative"
         >
-          <div className="relative flex items-center justify-center w-[280px] h-[280px] lg:w-[360px] lg:h-[360px]">
-            {/* Subtle rotating ring - respects reduced motion */}
-            <div className="absolute inset-0 rounded-full bg-[var(--color-cyber-blue)]/5 border border-[var(--color-cyber-blue)]/20 animate-[spin_30s_linear_infinite] motion-reduce:animate-none" />
-            
-            {/* Inner ring */}
-            <div className="absolute inset-4 rounded-full border border-[var(--color-cyber-purple)]/20" />
+          {/* Faint Nebula behind the image */}
+          <div className="absolute inset-0 m-auto w-64 h-64 bg-[var(--color-cyber-purple)]/10 rounded-full blur-[80px] pointer-events-none" />
 
+          <div className="relative flex items-center justify-center w-[280px] h-[280px] lg:w-[360px] lg:h-[360px]">
+            {/* Minimal border/glow around image instead of dominating rings */}
+            <div className="absolute inset-4 rounded-full border border-[var(--color-border)]/50" />
+            
             {/* Profile image */}
             <div
-              className="relative w-[240px] h-[240px] lg:w-[300px] lg:h-[300px] rounded-full overflow-hidden border-2 bg-[var(--color-card)] shadow-2xl"
-              style={{ borderColor: 'var(--color-border)' }}
+              className="relative w-[240px] h-[240px] lg:w-[300px] lg:h-[300px] rounded-full overflow-hidden border border-[var(--color-border)] bg-[var(--color-card)] shadow-lg"
             >
               <Image
                 src="/profile.jpg"
