@@ -2,7 +2,6 @@
 name: Portfolio Reviewer
 description: Expert code reviewer for the Portfolio project (Next.js 15 + TypeScript). Performs thorough static analysis focused on frontend security vulnerabilities, correctness bugs, bad practices, performance issues, and accessibility problems. Invoke this agent after any code is written or modified by the Developer agent.
 mode: subagent
-model: opencode-go/kimi-k2.7-code
 temperature: 0.2
 permission:
   edit: deny

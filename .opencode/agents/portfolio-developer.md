@@ -2,7 +2,6 @@
 name: Portfolio Developer
 description: Senior frontend developer for the Portfolio project (Next.js 15 + TypeScript). Implements features, components, styles, and layout changes following the project's strict coding standards. Invoke this agent to write or modify any code in the project after the Planner has produced a plan.
 mode: subagent
-model: opencode-go/kimi-k2.7-code
 temperature: 0.4
 ---
 
