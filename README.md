@@ -1,6 +1,6 @@
 # Daniel Mira — Portfolio
 
-> Personal portfolio of **Daniel Mira**, Systems & Computer Engineering Graduate. Purple Team · SOC Analyst · Ethical Hacker · Web Developer.
+> Personal portfolio of **Daniel Mira**, Systems & Computer Engineering Graduate. Full Stack Development · Network Security · Ethical Hacking · Blue Team
 
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)](https://nextjs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
