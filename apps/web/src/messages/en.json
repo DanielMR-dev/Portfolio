@@ -10,11 +10,13 @@
   "hero": {
     "greeting": "Hi, I'm",
     "name": "Daniel Mira",
-    "role": "Systems & Computer Engineering Graduate",
-    "tags": ["Purple Team", "SOC Analyst", "Ethical Hacker", "Web Developer"],
-    "cta_primary": "View Projects",
-    "cta_secondary": "Contact Me",
-    "available": "Available for remote work"
+    "role": "Systems and Computer Engineer",
+    "proposition": "I build web applications and cybersecurity tools by combining software engineering, networking and a security-first mindset.",
+    "tags": ["Full Stack Development", "Network Security", "Software Engineering", "Ethical Hacking"],
+    "cta_primary": "Explore NetSentinel",
+    "cta_secondary": "Download résumé",
+    "cta_tertiary": "Contact me",
+    "available": "Open to remote opportunities and selected projects."
   },
   "about": {
     "title": "About Me",
@@ -39,20 +41,31 @@
   "skills": {
     "title": "Skills",
     "subtitle": "Technologies & tools I work with",
+    "note": "Technologies are grouped by the context in which they have been used rather than subjective percentages.",
     "categories": {
-      "languages": "Languages",
-      "frameworks": "Frameworks & Libraries",
-      "security": "Security Tools",
-      "devops": "DevOps & Cloud"
+      "experience": "Professional Experience",
+      "featured": "Featured Projects",
+      "security": "Security & Networking",
+      "learning": "Learning"
     }
   },
   "projects": {
-    "title": "Projects",
+    "title": "Other Projects",
     "subtitle": "Things I've built",
     "filter_all": "All",
     "view_code": "Code",
     "view_live": "Live",
-    "no_results": "No projects found for this filter."
+    "case_study": "Case study",
+    "featured_badge": "Featured",
+    "internal_badge": "Internal project",
+    "no_results": "No projects found for this filter.",
+    "confidential_note": "The source code for this project is not public due to confidentiality reasons.",
+    "status": {
+      "active-development": "Active development",
+      "functional-prototype": "Functional prototype",
+      "completed": "Completed",
+      "internal": "Internal"
+    }
   },
   "experience": {
     "title": "Experience",

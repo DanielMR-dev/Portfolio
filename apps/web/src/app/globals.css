@@ -2,7 +2,7 @@
 
 @theme inline {
   --font-sans: var(--font-inter);
-  --font-mono: var(--font-mono);
+  --font-mono: var(--font-jetbrains-mono);
 
   /* Light mode */
   --color-background: hsl(0 0% 100%);

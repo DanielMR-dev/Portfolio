@@ -11,10 +11,12 @@
     "greeting": "Hola, soy",
     "name": "Daniel Mira",
     "role": "Ingeniero de Sistemas y Computación",
-    "tags": ["Purple Team", "Analista SOC", "Ethical Hacker", "Desarrollador Web"],
-    "cta_primary": "Ver proyectos",
-    "cta_secondary": "Contáctame",
-    "available": "Disponible para trabajo remoto"
+    "proposition": "Desarrollo aplicaciones web y herramientas de ciberseguridad combinando ingeniería de software, redes y una mentalidad de seguridad.",
+    "tags": ["Desarrollo Full Stack", "Seguridad de redes", "Ingeniería de software", "Ethical Hacking"],
+    "cta_primary": "Ver NetSentinel",
+    "cta_secondary": "Descargar CV",
+    "cta_tertiary": "Contactarme",
+    "available": "Disponible para oportunidades remotas y proyectos seleccionados."
   },
   "about": {
     "title": "Sobre mí",
@@ -39,20 +41,31 @@
   "skills": {
     "title": "Habilidades",
     "subtitle": "Tecnologías y herramientas con las que trabajo",
+    "note": "Las tecnologías se organizan según el contexto en el que han sido utilizadas, no mediante porcentajes subjetivos.",
     "categories": {
-      "languages": "Lenguajes",
-      "frameworks": "Frameworks y Librerías",
-      "security": "Herramientas de Seguridad",
-      "devops": "DevOps y Cloud"
+      "experience": "Experiencia Profesional",
+      "featured": "Proyectos Destacados",
+      "security": "Seguridad y Redes",
+      "learning": "En aprendizaje"
     }
   },
   "projects": {
-    "title": "Proyectos",
+    "title": "Otros Proyectos",
     "subtitle": "Lo que he construido",
     "filter_all": "Todos",
     "view_code": "Código",
     "view_live": "Demo",
-    "no_results": "No se encontraron proyectos para este filtro."
+    "case_study": "Caso de estudio",
+    "featured_badge": "Destacado",
+    "internal_badge": "Proyecto interno",
+    "no_results": "No se encontraron proyectos para este filtro.",
+    "confidential_note": "El código fuente de este proyecto no es público por razones de confidencialidad.",
+    "status": {
+      "active-development": "En desarrollo activo",
+      "functional-prototype": "Prototipo funcional",
+      "completed": "Completado",
+      "internal": "Interno"
+    }
   },
   "experience": {
     "title": "Experiencia",

@@ -1,175 +1,127 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Terminal } from 'lucide-react';
+import { Terminal, Download, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 
 export function Hero() {
   const t = useTranslations('hero');
-
-  const scrollToProjects = () => {
-    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const locale = useLocale();
 
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const tags = t.raw('tags') as string[];
+  const cvLink = locale === 'es' ? '/documents/daniel-mira-cv-es.pdf' : '/documents/daniel-mira-resume-en.pdf';
 
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden px-4"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 pt-20 pb-10 md:py-0"
     >
-      {/* Background grid */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `linear-gradient(var(--color-cyber-blue) 1px, transparent 1px),
-            linear-gradient(90deg, var(--color-cyber-blue) 1px, transparent 1px)`,
-          backgroundSize: '50px 50px',
-        }}
-      />
-
-      <div className="max-w-4xl mx-auto text-center relative z-10">
-
-        {/* Profile image with frame */}
+      <div className="max-w-6xl mx-auto w-full flex flex-col-reverse md:flex-row items-center justify-between gap-12 relative z-10">
+        
+        {/* Left Column: Content */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="flex justify-center mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="flex-1 text-center md:text-left flex flex-col items-center md:items-start"
         >
-          {/* Outer rotating ring */}
-          <div className="relative flex items-center justify-center">
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
-              className="absolute w-[300px] h-[300px] rounded-full"
-              style={{
-                background: `conic-gradient(
-                  from 0deg,
-                  var(--color-cyber-blue),
-                  var(--color-cyber-purple),
-                  transparent 60%,
-                  var(--color-cyber-blue)
-                )`,
-              }}
-            />
+          <div className="mb-6 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--color-secondary)] border border-[var(--color-border)] text-sm font-medium text-[var(--color-cyber-green)]">
+            <span className="relative flex w-2 h-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--color-cyber-green)] opacity-75"></span>
+              <span className="relative inline-flex rounded-full w-2 h-2 bg-[var(--color-cyber-green)]"></span>
+            </span>
+            {t('available')}
+          </div>
 
-            {/* Glow halo */}
-            <motion.div
-              animate={{ opacity: [0.4, 0.8, 0.4] }}
-              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute w-[290px] h-[290px] rounded-full"
-              style={{
-                boxShadow: `0 0 40px 8px color-mix(in srgb, var(--color-cyber-blue) 35%, transparent),
-                            0 0 80px 16px color-mix(in srgb, var(--color-cyber-purple) 20%, transparent)`,
-              }}
-            />
+          <p className="text-[var(--color-muted-foreground)] font-mono text-lg mb-2">
+            {t('greeting')}
+          </p>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-[var(--color-foreground)] mb-4 tracking-tight">
+            {t('name')}
+          </h1>
+          <p className="text-xl md:text-2xl font-medium text-[var(--color-cyber-blue)] mb-4">
+            {t('role')}
+          </p>
+          <p className="text-base md:text-lg text-[var(--color-muted-foreground)] mb-8 max-w-xl text-balance">
+            {t('proposition')}
+          </p>
 
-            {/* Frame border ring */}
-            <div
-              className="absolute w-[278px] h-[278px] rounded-full"
-              style={{
-                background: `linear-gradient(135deg, var(--color-cyber-blue), var(--color-cyber-purple))`,
-                padding: '2px',
-              }}
-            />
+          {/* Tags */}
+          <div className="flex flex-wrap justify-center md:justify-start gap-2 mb-10">
+            {tags.map((tag, i) => (
+              <span
+                key={tag}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono bg-[var(--color-secondary)] text-[var(--color-secondary-foreground)] border border-[var(--color-border)]"
+              >
+                <Terminal size={12} className="text-[var(--color-cyber-blue)]" />
+                {tag}
+              </span>
+            ))}
+          </div>
 
-            {/* Card background ring */}
-            <div
-              className="absolute w-[272px] h-[272px] rounded-full bg-[var(--color-card)]"
-            />
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+            <a
+              href="#featured-project"
+              className="group flex items-center justify-center gap-2 px-6 py-3 bg-[var(--color-primary)] text-[var(--color-primary-foreground)] rounded-lg font-medium hover:opacity-90 transition-all w-full sm:w-auto"
+            >
+              {t('cta_primary')}
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </a>
+            <a
+              href={cvLink}
+              target="_blank"
+              download
+              className="flex items-center justify-center gap-2 px-6 py-3 border border-[var(--color-border)] text-[var(--color-foreground)] rounded-lg font-medium hover:bg-[var(--color-secondary)] transition-colors w-full sm:w-auto"
+            >
+              <Download size={18} />
+              {t('cta_secondary')}
+            </a>
+            <button
+              onClick={scrollToContact}
+              className="flex items-center justify-center gap-2 px-6 py-3 border border-transparent text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] rounded-lg font-medium transition-colors w-full sm:w-auto"
+            >
+              {t('cta_tertiary')}
+            </button>
+          </div>
+        </motion.div>
+
+        {/* Right Column: Image */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
+          className="flex-1 flex justify-center md:justify-end"
+        >
+          <div className="relative flex items-center justify-center w-[280px] h-[280px] lg:w-[360px] lg:h-[360px]">
+            {/* Subtle rotating ring - respects reduced motion */}
+            <div className="absolute inset-0 rounded-full bg-[var(--color-cyber-blue)]/5 border border-[var(--color-cyber-blue)]/20 animate-[spin_30s_linear_infinite] motion-reduce:animate-none" />
+            
+            {/* Inner ring */}
+            <div className="absolute inset-4 rounded-full border border-[var(--color-cyber-purple)]/20" />
 
             {/* Profile image */}
             <div
-              className="relative w-[260px] h-[260px] rounded-full overflow-hidden border-2"
-              style={{ borderColor: 'var(--color-card)' }}
+              className="relative w-[240px] h-[240px] lg:w-[300px] lg:h-[300px] rounded-full overflow-hidden border-2 bg-[var(--color-card)] shadow-2xl"
+              style={{ borderColor: 'var(--color-border)' }}
             >
               <Image
                 src="/profile.jpg"
                 alt={t('name')}
                 fill
                 priority
-                sizes="260px"
-                className="object-cover object-center scale-[1.3] origin-top"
+                sizes="(max-width: 768px) 240px, 300px"
+                className="object-cover object-center scale-[1.1] origin-top"
               />
             </div>
-
-            {/* Corner accent dots */}
-            {[0, 90, 180, 270].map((deg) => (
-              <div
-                key={deg}
-                className="absolute w-2 h-2 rounded-full bg-[var(--color-cyber-blue)]"
-                style={{
-                  transform: `rotate(${deg}deg) translateY(-150px)`,
-                  boxShadow: '0 0 6px 2px var(--color-cyber-blue)',
-                }}
-              />
-            ))}
           </div>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
-          <p className="text-[var(--color-muted-foreground)] font-mono text-lg mb-2">
-            {t('greeting')}
-          </p>
-          <h1 className="text-5xl md:text-7xl font-bold text-[var(--color-foreground)] mb-4">
-            {t('name')}
-          </h1>
-          <p className="text-xl md:text-2xl text-[var(--color-muted-foreground)] mb-6">
-            {t('role')}
-          </p>
-        </motion.div>
-
-        {/* Tags */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex flex-wrap justify-center gap-2 mb-10"
-        >
-          {tags.map((tag, i) => (
-            <motion.span
-              key={tag}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3, delay: 0.5 + i * 0.1 }}
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-mono bg-[var(--color-secondary)] text-[var(--color-secondary-foreground)] border border-[var(--color-border)]"
-            >
-              <Terminal size={12} className="text-[var(--color-cyber-blue)]" />
-              {tag}
-            </motion.span>
-          ))}
-        </motion.div>
-
-        {/* CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.7 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <button
-            onClick={scrollToProjects}
-            className="px-6 py-3 bg-[var(--color-primary)] text-[var(--color-primary-foreground)] rounded-lg font-medium hover:opacity-90 transition-opacity w-full sm:w-auto"
-          >
-            {t('cta_primary')}
-          </button>
-          <button
-            onClick={scrollToContact}
-            className="px-6 py-3 border border-[var(--color-border)] text-[var(--color-foreground)] rounded-lg font-medium hover:bg-[var(--color-secondary)] transition-colors w-full sm:w-auto"
-          >
-            {t('cta_secondary')}
-          </button>
-        </motion.div>
       </div>
     </section>
   );

@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 const jetbrainsMono = JetBrains_Mono({
-  variable: '--font-mono',
+  variable: '--font-jetbrains-mono',
   subsets: ['latin'],
   display: 'swap',
 });
@@ -20,15 +20,15 @@ export const metadata: Metadata = {
     default: 'Daniel Mira — Systems Engineer & Security Specialist',
   },
   description:
-    'Portfolio of Daniel Mira Restrepo — Systems & Computer Engineering Graduate specializing in Purple Team, SOC Analysis, Ethical Hacking and Web Development.',
+    'Portfolio of Daniel Mira Restrepo — Systems & Computer Engineering Graduate specializing in Network Security, Software Engineering, and Ethical Hacking.',
   authors: [{ name: 'Daniel Mira Restrepo' }],
   creator: 'Daniel Mira Restrepo',
   keywords: [
     'cybersecurity',
-    'SOC analyst',
+    'software engineering',
     'ethical hacker',
-    'purple team',
-    'web developer',
+    'network security',
+    'full stack developer',
     'Next.js',
     'React',
     'TypeScript',
